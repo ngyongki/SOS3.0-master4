@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private SharedPreferences.Editor loginPrefsEditor;
     private Boolean saveLogin;
 
-    private String username,password;
+    private String username;
 
     private DatabaseHelper databaseHelper;
 
@@ -104,11 +104,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 imm.hideSoftInputFromWindow(textInputEditTextEmail.getWindowToken(), 0);
 
                 username = textInputEditTextEmail.getText().toString();
-                password = textInputEditTextPassword.getText().toString();
                 if (saveLoginCheckBox.isChecked()) {
                     loginPrefsEditor.putBoolean("saveLogin", true);
                     loginPrefsEditor.putString("username", username);
-                    loginPrefsEditor.putString("password", password);
                     loginPrefsEditor.commit();
                 } else {
                     loginPrefsEditor.clear();

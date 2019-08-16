@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.sos.modal.Contact;
 import com.example.sos.modal.User;
 import com.example.sos.sql.DatabaseHelper;
 
@@ -64,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void initObjects() {
         databaseHelper = new DatabaseHelper(activity);
         user = new User();
+
 
     }
 

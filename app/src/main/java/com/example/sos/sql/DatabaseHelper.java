@@ -86,8 +86,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
 
-        if (oldVersion < 3) {
-            db.execSQL(DATABASE_ALTER_CONTACT);
+        if (newVersion > oldVersion) {
+           db.execSQL(DATABASE_ALTER_CONTACT);
         }
 
 
@@ -244,19 +244,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    //update user record
-    public void updateContact(Contact contact) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_CONTACT_NAME, contact.getContactName());
-        values.put(COLUMN_CONTACT_NUMBER, contact.getContactNumber());
-
-        // updating row
-        db.update(TABLE_CONTACT, values, COLUMN_CONTACT_ID + " = ?",
-                new String[]{String.valueOf(contact.getContactId())});
-        db.close();
-    }
 
     public int getContactCount(String email) {
         String column[] = {COLUMN_CONTACT_ID, COLUMN_CONTACT_NAME, COLUMN_CONTACT_NUMBER, COLUMN_USER_EMAIL_FK};
